@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 
-<html>
-    <head xmlns:th="http://www.thymeleaf.org" th:replace="layouts/layout_base::head"
-          xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <link rel="stylesheet" th:href="@{../webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{../webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{../webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{../webjars/popper.js/umd/popper.min.js}"></script> 
+        <script th:src="@{../webjars/bootstrap/js/bootstrap.min.js}"></script>        
+        <script th:src="@{../webjars/sweetalert/sweetalert.min.js}"></script>        
+        <script src="../funciones.js"></script>
         <title>description</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     </head>
     <body>
         <ul th:replace="layouts/layout_base :: nav"></ul>
@@ -21,13 +28,9 @@
                     <h6 class="card-title" th:text="${matter.schedule}"></h6>
                     <p class="card-text" th:text="${matter.description}"></p>
                     <p class="card-text" th:text="'Cupo: '+${matter.quota}"></p>
-                    <div th:each="inscripcion : ${inscripciones}">        
-                        <p sec:authorize="hasRole('ROLE_STUDENT')" th:if="${matter.id_matter==inscripcion}">Ya estas inscripto</p>
-                    </div>
-                    <button th:unless="${matter.id_matter==inscripcion}" type="submit" name="confirmar" class="btn btn-primary">Confirmar Incripción</button>
-
-                    
-                    
+                    <a th:if="${inscripcion}==true" href="/inscriptions">Ya estas inscripto</a>
+                    <button th:if="${inscripcion}!=true" type="submit" name="confirmar" class="btn btn-primary">Confirmar Incripción</button>
+   
                     
                 </div>
             </form>

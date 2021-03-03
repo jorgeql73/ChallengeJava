@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 
-<html>
-    <head xmlns:th="http://www.thymeleaf.org" th:replace="layouts/layout_base::head">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layouts/layout_base::head">
         <title>index</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     </head>
      
     <body>
@@ -19,7 +20,7 @@
                     </div>
                     
                     
-                    <img th:src="@{img/home.jpg}" class="w-100 h-40" />
+                    <img th:src="@{home.jpg}" class="w-100 h-40" />
 
                     
                     
